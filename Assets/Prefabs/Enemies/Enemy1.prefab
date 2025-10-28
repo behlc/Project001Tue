@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195653127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1045864064, guid: b9139b3fa41cd884d8e68e49d4615e9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,6 +107,8 @@ MonoBehaviour:
   rb: {fileID: 3746036328887133968}
   moveSpeed: 0.1
   destroyEffect: {fileID: 8545141020819938886, guid: d21d1f9ae98b5e04faea5da10ab04ec7, type: 3}
+  damage: 1
+  health: 3
 --- !u!50 &3746036328887133968
 Rigidbody2D:
   serializedVersion: 5

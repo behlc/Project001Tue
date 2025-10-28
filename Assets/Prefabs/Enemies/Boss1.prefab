@@ -52,6 +52,8 @@ MonoBehaviour:
   rb: {fileID: 4350411099886565397}
   moveSpeed: 1.5
   destroyEffect: {fileID: 8545141020819938886, guid: d21d1f9ae98b5e04faea5da10ab04ec7, type: 3}
+  damage: 5
+  health: 3
 --- !u!212 &6256936002234911717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195653127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5912800498141821623, guid: 6335d6e9c3adc9a48a4b27542284465e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 2506524863
     locked: 0
+  - name: Weapons
+    uniqueID: 2258262823
+    locked: 0
   - name: Objects
     uniqueID: 3099314169
     locked: 0

@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     private Vector3 direction;
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject destroyEffect;
+    [SerializeField] private float damage;
+    [SerializeField] private float health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,9 +43,19 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") )
         {
-            PlayerController.Instance.TakeDamage(1);
+            PlayerController.Instance.TakeDamage(damage);
+
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if(health <=0)
+        {
             Destroy(gameObject);
             Instantiate(destroyEffect,transform.position, transform.rotation);
         }
     }
+
 }
