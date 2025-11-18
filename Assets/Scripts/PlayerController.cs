@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
@@ -10,6 +12,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerMoveDirection;
     public float playerMaxHealth;
     public float playerHealth;
+
+    public int experience;
+
+    public int currentLevel;
+    public int maxLevel;
+    public List<int> playerLevels;
+
 
 
 
@@ -29,8 +38,15 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        for (int i = playerLevels.Count; i < maxLevel; i++)
+        {
+            playerLevels.Add(Mathf.CeilToInt(playerLevels[playerLevels.Count - 1] * 1.1f + 15));
+        }
+
         playerHealth = playerMaxHealth;
         UIController.Instance.UpdateHealthSlider();
+        UIController.Instance.UpdateExperienceSlider();
+
     }
 
     // Update is called once per frame
@@ -68,6 +84,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GetExperience(int experienceToGet) 
+    {
+        experience += experienceToGet;
+        UIController.Instance.UpdateExperienceSlider();
+        if(experience >= playerLevels[currentLevel - 1])
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        experience -= playerLevels[currentLevel - 1];
+        UIController.Instance.LevelUpPanelOpen();
+        currentLevel++;
+        UIController.Instance.UpdateExperienceSlider();
+    }
 
 }
 

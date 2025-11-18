@@ -10,7 +10,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
     public GameObject gameOverPanel;
     public GameObject pausePanel;
+    [SerializeField] private Slider playerExperienceSlider;
+    [SerializeField] private TMP_Text experienceText;
 
+    public GameObject levelUpPanel;
+    [SerializeField] private TMP_Text levelText;
+    private AreaWeapon UIWeapon;
 
     void Awake()
  {
@@ -27,13 +32,21 @@ public class UIController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        UIWeapon = GameObject.Find("AreaWeapon").GetComponent<AreaWeapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(levelUpPanel.activeSelf == true)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                levelUpPanel.SetActive(false);
+                Time.timeScale = 1f;
+                //UIWeapon.LevelUp();
+            }
+        }
     }
 
     public void UpdateHealthSlider()
@@ -43,5 +56,21 @@ public class UIController : MonoBehaviour
         healthText.text = playerHealthSlider.value + "/" + playerHealthSlider.maxValue;
     
     }
+
+    public void UpdateExperienceSlider()
+    {
+        playerExperienceSlider.maxValue = PlayerController.Instance.playerLevels[PlayerController.Instance.currentLevel-1];
+        playerExperienceSlider.value = PlayerController.Instance.experience;
+        experienceText.text = playerExperienceSlider.value + "/" + playerExperienceSlider.maxValue;
+    
+    }
+
+    public void LevelUpPanelOpen()
+    {
+        levelText.text = "Level " + PlayerController.Instance.currentLevel + " Completed";
+        levelUpPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
 
 }

@@ -1,13 +1,9 @@
 using UnityEngine;
 
-public class AreaWeapon : MonoBehaviour
+public class AreaWeapon : Weapon
 {   
     [SerializeField] private GameObject prefab;
     private float spawnCounter;
-
-    public float coolDown = 5f;
-    public float duration = 3f;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +17,7 @@ public class AreaWeapon : MonoBehaviour
         spawnCounter -= Time.deltaTime;
         if (spawnCounter <= 0)
         {
-            spawnCounter = coolDown;
+            spawnCounter = stats[weaponLevel].coolDown;
             Instantiate(prefab, transform.position, transform.rotation, transform);
         }
         

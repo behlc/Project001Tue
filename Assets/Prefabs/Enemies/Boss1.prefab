@@ -54,6 +54,8 @@ MonoBehaviour:
   destroyEffect: {fileID: 8545141020819938886, guid: d21d1f9ae98b5e04faea5da10ab04ec7, type: 3}
   damage: 5
   health: 3
+  experienceToGive: 10
+  pushTime: 2
 --- !u!212 &6256936002234911717
 SpriteRenderer:
   m_ObjectHideFlags: 0
